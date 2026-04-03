@@ -1,0 +1,22 @@
+# Frigate on Mini PC or Jetson. Place config.yml beside this file or adjust volumes.
+# UI: http://<host>:5000
+#
+# Linux: add host.docker.internal for MQTT on host (optional):
+#   extra_hosts:
+#     - "host.docker.internal:host-gateway"
+
+services:
+  frigate:
+    container_name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    restart: unless-stopped
+    privileged: true
+    shm_size: "512mb"
+    ports:
+      - "5000:5000"
+      - "8554:8554"
+    volumes:
+      - ./config.yml:/config/config.yml
+      - ./media:/media/frigate
+    environment:
+      - FRIGATE_RTSP_PASSWORD=password

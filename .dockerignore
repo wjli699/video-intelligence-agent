@@ -1,0 +1,17 @@
+.venv
+.git
+.gitignore
+__pycache__
+*.py[cod]
+.env
+*.egg-info
+dist
+build
+mosquitto/data/*
+!mosquitto/data/.gitkeep
+mosquitto/log/*
+!mosquitto/log/.gitkeep
+media
+.pytest_cache
+.mypy_cache
+.ruff_cache

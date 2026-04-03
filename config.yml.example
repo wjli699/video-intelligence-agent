@@ -1,0 +1,27 @@
+# Copy to config.yml at repo root for docker-compose.yml.
+# MQTT: use service name `mosquitto` (not localhost) so Frigate reaches the broker on the Docker network.
+
+mqtt:
+  enabled: true
+  host: mosquitto
+  port: 1883
+
+detectors:
+  cpu1:
+    type: cpu
+
+cameras:
+  demo_cam:
+    ffmpeg:
+      inputs:
+        - path: rtsp://YOUR_STREAM
+          roles:
+            - detect
+    detect:
+      width: 640
+      height: 360
+      fps: 5
+    objects:
+      track:
+        - person
+        - car

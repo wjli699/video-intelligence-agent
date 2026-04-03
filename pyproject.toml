@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "video-intel-agent"
+version = "0.1.0"
+description = "Video Intelligent Agent — Frigate ingestion, event store, skills API, remote LLM"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.109.0",
+  "uvicorn[standard]>=0.27.0",
+  "sqlalchemy>=2.0.0",
+  "psycopg2-binary>=2.9.9",
+  "paho-mqtt>=2.0.0",
+  "requests>=2.31.0",
+  "pydantic>=2.5.0",
+  "pydantic-settings>=2.1.0",
+  "python-dotenv>=1.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["adapters*", "core*", "skills*", "llm*", "api*", "db*", "plugins*"]
